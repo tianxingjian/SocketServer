@@ -41,8 +41,8 @@ public class SocketClient {
 		try {
 			socket = new Socket();
 			Map<String, String> conf =	new HashMap<String, String>();
-			conf.put("socket.host", "59.53.216.137");
-			conf.put("socket.port", "10040");
+			conf.put("socket.host", "127.0.0.1");
+			conf.put("socket.port", "1000");
 			conf.put("socket.connect.timeout", "10000");
 			conf.put("socket.so.timeout", "10000");
 			// 根据taskId获取爬虫任务配置参数，将参数加入conf
@@ -75,7 +75,7 @@ public class SocketClient {
 			Object obj = null;
 			try {
 				obj = ois.readObject();
-			} catch (ClassNotFoundException e) {
+			} catch (ClassNotFoundException e) { 
 				LOGGER.info("无法接收服务器响应状态");
 			}
 			if (obj != null) {
