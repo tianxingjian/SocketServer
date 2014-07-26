@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<!-- 指定Socket主机 -->
+	<property>
+		<name>socket.host</name>
+		<value>10.255.245.68</value>
+	</property>
+	<!-- 如果ElasticSearch不和爬虫在同一个网段则指定端口 -->
+	<property>
+		<name>elastic.port</name>
+		<value>9300</value>
+	</property>
+	<!-- 索引集群名称 -->
+	<property>
+		<name>elastic.cluster</name>
+		<value>elasticsearch</value>
+	</property>
+	<!-- 索引名称 -->
+	<property>
+		<name>elastic.index</name>
+		<value>webpage</value>
+	</property>
+	<!-- 批量索引网页数 -->
+	<property>
+		<name>elastic.max.bulk.docs</name>
+		<value>500</value>
+	</property>
+	<!-- HBase使用的zookeeper集群主机 -->
+    <property>  
+        <name>hbase.zookeeper.quorum</name>  
+        <value>localhost</value>  
+    </property>
+	<!-- HBase使用的zookeeper集群主机使用的端口 -->
+    <property>  
+        <name>hbase.zookeeper.property.clientPort</name>  
+        <value>2181</value>  
+    </property>
+	<!-- 获取爬虫任务配置的接口 -->
+    <property>  
+        <name>crawl.task.config.url</name>  
+        <value>http://localhost:8080/crawler/interface/crawl_task_config.jsp</value>  
+    </property>
+	<!-- 获取注入种子URL的接口 -->
+    <property>  
+        <name>crawl.task.seeds.url</name>  
+        <value>http://localhost:8080/crawler/interface/crawl_task_seeds.jsp</value>  
+    </property>
+	<!-- 获取URL解析规则的接口 -->
+    <property>  
+        <name>all.parse.regular.url</name>  
+        <value>http://localhost:8080/crawler/interface/all_parse_regular.jsp</value>  
+    </property>
+	<!-- 保存网页解析失败日志的接口 -->
+    <property>  
+        <name>save.parse.fail.log.url</name>  
+        <value>http://localhost:8080/crawler/interface/save_parse_fail_log.jsp</value>  
+    </property>
+	<!-- 保存任务状态报告的接口 -->
+    <property>  
+        <name>save.task.status.url</name>
+        <value>http://localhost:8080/crawler/interface/save_task_status.jsp</value>  
+    </property>
+    <!-- 边下载边解析网页 -->
+	<property>
+		<name>fetcher.parse</name>
+		<value>true</value>
+	</property>
+	<!-- 不保存网页原始内容 -->
+	<property>
+		<name>fetcher.store.content</name>
+		<value>false</value>
+	</property>
+	<!-- 模拟IE浏览器 -->
+    <property>  
+        <name>http.agent.name</name>  
+        <value>Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; WOW64; Trident</value>  
+    </property>  
+    <property>  
+        <name>http.agent.version</name>  
+        <value>*,6.0)</value>  
+    </property> 
+    <!-- 不限制内容长度 -->
+	<property>
+		<name>http.content.limit</name>
+		<value>-1</value>
+	</property>
+	<!-- 不限制输出链接 -->
+	<property>
+		<name>db.max.outlinks.per.page</name>
+		<value>-1</value>
+	</property>
+	<!-- 每次请求之间的暂停时间 -->
+	<property>
+	  <name>fetcher.server.delay</name>
+	  <value>0.0</value>
+	</property>
+	<!-- 对同一网站的并发抓取线程 -->
+	<property>
+	  <name>fetcher.threads.per.queue</name>
+	  <value>10</value>
+	</property>
+	<!-- 站内抓取 -->
+	<property>
+	  <name>db.ignore.external.links</name>
+	  <value>true</value>
+	</property>
+	<!-- 压缩配置 -->
+	<property>
+		<name>mapred.output.compression.type</name>
+		<value>BLOCK</value>
+	</property>
+	<property>
+		<name>mapred.output.compress</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>mapred.compress.map.output</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>mapred.map.output.compression.codec</name>
+		<value>org.apache.hadoop.io.compress.SnappyCodec</value>
+	</property>
+	<property>
+		<name>mapred.output.compression.codec</name>
+		<value>org.apache.hadoop.io.compress.SnappyCodec</value>
+	</property>	
+</configuration>
